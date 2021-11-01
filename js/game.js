@@ -2,12 +2,14 @@
 const canvas = document.getElementById('game-canvas');
 const ctx = canvas.getContext('2d');
 
-
+const hero = new Hero();
+const enemy = new Enemy();
 
 const game = () => {
     clearCanvas();
     drawBackground();
-    drawHero();
+    hero.draw();
+    enemy.draw();
 }
 
 const clearCanvas = () => {
@@ -21,7 +23,3 @@ const drawBackground = () => {
     ctx.fillRect(0, 0, 700, 200);
 }
 
-const drawHero = () => {
-    ctx.fillStyle = 'blue'
-    ctx.fillRect(50, 150, 50, 100);
-}
