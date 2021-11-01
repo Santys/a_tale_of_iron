@@ -24,6 +24,7 @@ const game = () => {
         displayDefeat();
     } else {
         drawBackground();
+        displayCombat();
         combat()
         hero.draw();
         enemy.move();
@@ -123,4 +124,27 @@ const displayDefeat = () => {
     ctx.textAlign = "center";
     ctx.font = "70px serif";
     ctx.fillText("DEFEAT", 350, 150);
+}
+
+const displayCombat = () => {
+    ctx.fillStyle = 'white'
+    ctx.font = "30px serif";
+    ctx.fillText(`Lives: ${hero.life}`, 50, 50);
+
+    if(enemy.x === 600) {
+        ctx.fillStyle = 'green'
+        ctx.beginPath();
+        ctx.moveTo(350,100);
+        ctx.lineTo(400,190);
+        ctx.lineTo(300,190);
+        ctx.closePath();
+        ctx.fill();
+        ctx.fillStyle = 'white'
+        ctx.font = "30px serif";
+        ctx.fillText(`Lives: ${enemy.life}`, 550, 50);
+        ctx.font = "15px serif";
+        ctx.fillText('ATTACK', 320, 85);
+        ctx.fillText('MOCK', 405, 190);
+        ctx.fillText('DEFEND', 240, 190);
+    }
 }

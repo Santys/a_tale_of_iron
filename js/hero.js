@@ -1,6 +1,6 @@
 class Hero {
     constructor() {
-        this.life = 1;
+        this.life = 3;
         this.x = 50;
         this.y = 150;
         this.width = 50;
