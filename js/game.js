@@ -2,10 +2,6 @@
 const canvas = document.getElementById('game-canvas');
 const ctx = canvas.getContext('2d');
 
-//  Characters
-const hero = new Hero();
-const enemy = new Enemy();
-
 // Flags 
 let skillPicked = false;
 let victory = false;
@@ -13,7 +9,17 @@ let defeat = false;
 
 // Variables
 let skillNumber = 0;
+let enemyNumber = 0;
 
+
+//  Characters
+const hero = new Hero();
+const enemyFirst = new Enemy('DarkRed');
+const enemySecond = new Enemy('Aquamarine');
+const enemyThird = new Enemy('NavajoWhite');
+const boss = new Enemy('Gray');
+const enemyArray = [enemyFirst, enemySecond, enemyThird, boss];
+let enemy = enemyArray[enemyNumber]
 
 
 const game = () => {
@@ -25,10 +31,10 @@ const game = () => {
     } else {
         drawBackground();
         displayCombat();
-        combat()
         hero.draw();
         enemy.move();
-        enemy.draw();
+        enemy.draw();       
+        combat();
     }
 }
 
@@ -48,23 +54,25 @@ const combat = () => {
         const enemySkill = enemy.selectSkill();
         const heroSkill = hero.selectSkill(skillNumber);
         const result = battleResult(heroSkill, enemySkill);
-        victory = enemy.defeated();
+        if(enemy.defeated()) enemyNumber++
+        if(enemyNumber > 3) victory = enemy.defeated()
         defeat = hero.defeated();
         skillPicked = false;
         console.log(heroSkill);
         console.log(enemySkill);
         console.log(result)
+        enemy = enemyArray[enemyNumber]
     }
 }
 
 const playerSkill = (skill) => {
-    if(skill === 'ArrowRight') {
+    if(skill === 'ArrowUp') {
         skillPicked = true
         skillNumber = 0
     } else if(skill === 'ArrowLeft') {
         skillPicked = true
         skillNumber = 1
-    } else if(skill === 'ArrowUp') {
+    } else if(skill === 'ArrowRight') {
         skillPicked = true
         skillNumber = 2
     }

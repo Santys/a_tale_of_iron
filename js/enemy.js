@@ -1,18 +1,20 @@
 class Enemy {
-    constructor() {
+    constructor(color) {
         this.life = 1;
         this.x = 1000;
         this.y = 150;
         this.speedX = -1;
         this.width = 50;
         this.height = 100;
-        this.skills = ['attack', 'defend', 'mock'];
+        // this.skills = ['attack', 'defend', 'mock'];
+        this.skills = ['defend'];
         this.isDefeated = false;
+        this.color = color;
     }
     
 
     draw() {
-        ctx.fillStyle = 'DarkRed'
+        ctx.fillStyle = this.color;
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
 
