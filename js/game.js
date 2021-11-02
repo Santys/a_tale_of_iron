@@ -15,6 +15,7 @@ let enemyNumber = 0;
 
 
 //  Characters
+const background = new Background();
 const hero = new Hero();
 const enemyFirst = new Enemy(2, 0, ['attack', 'defend', 'mock', 'attack', 'attack', 'attack', 'attack']);
 const enemySecond = new Enemy(2, 1, ['attack', 'defend', 'mock', 'defend', 'defend', 'defend', 'defend']);
@@ -45,10 +46,11 @@ const clearCanvas = () => {
 }
 
 const drawBackground = () => {
-    ctx.fillStyle = 'tan'
-    ctx.fillRect(0, 200, 700, 100);
-    ctx.fillStyle = 'skyblue'
-    ctx.fillRect(0, 0, 700, 200);
+    // ctx.fillStyle = 'tan'
+    // ctx.fillRect(0, 200, 700, 100);
+    // ctx.fillStyle = 'skyblue'
+    // ctx.fillRect(0, 0, 700, 200);
+    background.drawBackground();
 }
 
 const combat = () => {

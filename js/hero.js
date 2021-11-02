@@ -2,7 +2,7 @@ class Hero {
     constructor() {
         this.life = 5;
         this.x = 0;
-        this.y = 100;
+        this.y = 120;
         this.width = 220;
         this.height = 220;
         this.skills = ['attack', 'defend', 'mock'];

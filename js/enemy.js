@@ -2,7 +2,7 @@ class Enemy {
     constructor(lives, number, skills) {
         this.life = lives;
         this.x = 1000;
-        this.y = 110;
+        this.y = 140;
         this.speedX = 0;
         this.width = 240;
         this.height = 160;
