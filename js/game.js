@@ -12,6 +12,7 @@ let skillNumber = 0;
 let enemyNumber = 0;
 let enemySkill = '';
 let heroSkill = '';
+let result = '';
 
 
 
@@ -59,11 +60,13 @@ const combat = () => {
     if(enemy.x === 700-enemy.width && skillPicked) {
         enemySkill = enemy.selectSkill();
         heroSkill = hero.selectSkill(skillNumber);
-        const result = battleResult(heroSkill, enemySkill);
+        result = battleResult(heroSkill, enemySkill);
         if(enemy.defeated()) {
             enemyNumber++
             heroSkill = '';
             enemySkill = '';
+            result = '';
+            // result = 'The enemy has been defeated'
         }
         if(enemyNumber > 3) victory = enemy.defeated()
         defeat = hero.defeated();
@@ -75,10 +78,11 @@ const combat = () => {
     }
     
     ctx.fillStyle = 'white'
-    ctx.font = "30px serif";
+    ctx.font = "20px serif";
     ctx.textAlign = "center";
     ctx.fillText(`${heroSkill.toUpperCase()}`, 110, 150);
     ctx.fillText(`${enemySkill.toUpperCase()}`, 580, 150);
+    ctx.fillText(`${result.toUpperCase()}`, 350, 250);
     
 }
 
@@ -105,31 +109,31 @@ const playerSkill = (skill) => {
  * @return {boolean} True when skills are different and false if they are the same
  */
 const battleResult = (heroSkill, enemySkill) => {
-    if(heroSkill === enemySkill) return false;
+    if(heroSkill === enemySkill) return "Draw";
 
     if(heroSkill === 'attack'){
         if(enemySkill === 'mock') {
             enemy.life -= 1;
-            return true;
+            return "The enemy has been injured";
         } else if (enemySkill === 'defend'){
             hero.life -= 1;
-            return true;
+            return "You have been injured";
         }
     } else if(heroSkill === 'defend'){
         if(enemySkill === 'attack') {
             enemy.life -= 1;
-            return true;
+            return "The enemy has been injured";
         } else if (enemySkill === 'mock'){
             hero.life -= 1;
-            return true;
+            return "You have been injured";
         }
     } else if(heroSkill === 'mock') {
         if(enemySkill === 'defend') {
             enemy.life -= 1;
-            return true;
+            return "The enemy has been injured";
         } else if (enemySkill === 'attack'){
             hero.life -= 1;
-            return true;
+            return "You have been injured";
         }
     }
 }
