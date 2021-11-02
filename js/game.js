@@ -195,7 +195,7 @@ const displayCombat = () => {
         ctx.fillText('ATTACK', 350, 95);
         ctx.fillText('MOCK', 425, 190);
         ctx.fillText('DEFEND', 270, 190);
-    } else {
+    } else if (enemy.speedX != -1){
         ctx.fillStyle = 'yellow'
         ctx.beginPath();
         ctx.moveTo(350,120);
