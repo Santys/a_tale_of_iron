@@ -160,12 +160,13 @@ const displayCombat = () => {
         ctx.fillText('MOCK', 405, 190);
         ctx.fillText('DEFEND', 240, 190);
     } else {
-        ctx.fillStyle = 'green'
+        ctx.fillStyle = 'yellow'
         ctx.beginPath();
-        ctx.moveTo(300,100);
-        ctx.lineTo(400,145);
-        ctx.lineTo(300,190);
+        ctx.moveTo(350,120);
+        ctx.lineTo(380,145);
+        ctx.lineTo(350,170);
         ctx.closePath();
         ctx.fill();
+        ctx.fillRect(300, 140, 50, 10);
     }
 }
