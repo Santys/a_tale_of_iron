@@ -1,13 +1,13 @@
 class Enemy {
-    constructor(color) {
-        this.life = 1;
+    constructor(lives, color, skills) {
+        this.life = lives;
         this.x = 1000;
         this.y = 150;
         this.speedX = 0;
         this.width = 50;
         this.height = 100;
         // this.skills = ['attack', 'defend', 'mock'];
-        this.skills = ['defend'];
+        this.skills = skills;
         this.isDefeated = false;
         this.color = color;
     }

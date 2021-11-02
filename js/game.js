@@ -14,10 +14,10 @@ let enemyNumber = 0;
 
 //  Characters
 const hero = new Hero();
-const enemyFirst = new Enemy('DarkRed');
-const enemySecond = new Enemy('Aquamarine');
-const enemyThird = new Enemy('NavajoWhite');
-const boss = new Enemy('Gray');
+const enemyFirst = new Enemy(2, 'DarkRed', ['attack', 'defend', 'mock', 'attack', 'attack', 'attack', 'attack']);
+const enemySecond = new Enemy(2, 'Aquamarine', ['attack', 'defend', 'mock', 'defend', 'defend', 'defend', 'defend']);
+const enemyThird = new Enemy(2, 'NavajoWhite', ['attack', 'defend', 'mock', 'mock', 'mock', 'mock', 'mock']);
+const boss = new Enemy(3, 'Gray', ['attack', 'defend', 'mock']);
 const enemyArray = [enemyFirst, enemySecond, enemyThird, boss];
 let enemy = enemyArray[enemyNumber]
 
