@@ -1,5 +1,5 @@
 class Enemy {
-    constructor(lives, color, skills) {
+    constructor(lives, number, skills) {
         this.life = lives;
         this.x = 1000;
         this.y = 110;
@@ -9,8 +9,8 @@ class Enemy {
         // this.skills = ['attack', 'defend', 'mock'];
         this.skills = skills;
         this.isDefeated = false;
-        this.color = color;
-        this.img = "./img/golem_03_Idle_0.png"
+        this.number = number;
+        this.img = ["./img/golem_01_Idle_000.png", "./img/golem_02_Idle_000.png", "./img/golem_03_Idle_000.png", "./img/boss_Idle_000.png"]
     }
     
 
@@ -18,7 +18,7 @@ class Enemy {
         // ctx.fillStyle = this.color;
         // ctx.fillRect(this.x, this.y, this.width, this.height);
         const imagen = new Image();
-        imagen.src = this.img;
+        imagen.src = this.img[this.number];
         ctx.drawImage(imagen, this.x, this.y, this.width, this.height);
     }
 
