@@ -10,6 +10,8 @@ let defeat = false;
 // Variables
 let skillNumber = 0;
 let enemyNumber = 0;
+let enemySkill = '';
+let heroSkill = '';
 
 
 
@@ -55,10 +57,14 @@ const drawBackground = () => {
 
 const combat = () => {
     if(enemy.x === 700-enemy.width && skillPicked) {
-        const enemySkill = enemy.selectSkill();
-        const heroSkill = hero.selectSkill(skillNumber);
+        enemySkill = enemy.selectSkill();
+        heroSkill = hero.selectSkill(skillNumber);
         const result = battleResult(heroSkill, enemySkill);
-        if(enemy.defeated()) enemyNumber++
+        if(enemy.defeated()) {
+            enemyNumber++
+            heroSkill = '';
+            enemySkill = '';
+        }
         if(enemyNumber > 3) victory = enemy.defeated()
         defeat = hero.defeated();
         skillPicked = false;
@@ -67,6 +73,13 @@ const combat = () => {
         console.log(result)
         enemy = enemyArray[enemyNumber]
     }
+    
+    ctx.fillStyle = 'white'
+    ctx.font = "30px serif";
+    ctx.textAlign = "center";
+    ctx.fillText(`${heroSkill.toUpperCase()}`, 110, 150);
+    ctx.fillText(`${enemySkill.toUpperCase()}`, 580, 150);
+    
 }
 
 const playerSkill = (skill) => {
@@ -140,9 +153,10 @@ const displayDefeat = () => {
 }
 
 const displayCombat = () => {
+    ctx.textAlign = "center";
     ctx.fillStyle = 'white'
     ctx.font = "30px serif";
-    ctx.fillText(`Lives: ${hero.life}`, 50, 50);
+    ctx.fillText(`Lives: ${hero.life}`, 110, 50);
 
     if(enemy.x === 700-enemy.width) {
         ctx.fillStyle = 'red'
@@ -154,11 +168,11 @@ const displayCombat = () => {
         ctx.fill();
         ctx.fillStyle = 'white'
         ctx.font = "30px serif";
-        ctx.fillText(`Lives: ${enemy.life}`, 550, 50);
+        ctx.fillText(`Lives: ${enemy.life}`, 580, 50);
         ctx.font = "15px serif";
-        ctx.fillText('ATTACK', 320, 85);
-        ctx.fillText('MOCK', 405, 190);
-        ctx.fillText('DEFEND', 240, 190);
+        ctx.fillText('ATTACK', 350, 95);
+        ctx.fillText('MOCK', 425, 190);
+        ctx.fillText('DEFEND', 270, 190);
     } else {
         ctx.fillStyle = 'yellow'
         ctx.beginPath();
