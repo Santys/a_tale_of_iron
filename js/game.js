@@ -18,7 +18,8 @@ let result = '';
 
 
 //  Characters
-const background = new Background();
+const background0 = new Background(0, 0);
+const background1 = new Background(700, 0);
 const hero = new Hero();
 const enemyFirst = new Enemy(2, 0, ['attack', 'defend', 'mock', 'attack', 'attack', 'attack', 'attack']);
 const enemySecond = new Enemy(2, 1, ['attack', 'defend', 'mock', 'defend', 'defend', 'defend', 'defend']);
@@ -31,10 +32,13 @@ let enemy = enemyArray[enemyNumber]
 const game = () => {
     clearCanvas();
     if(victory){
+        drawBackground();
         displayVictory();
     } else if (defeat){
+        drawBackground();
         displayDefeat();
     } else {
+        updateBackground();
         drawBackground();
         displayCombat();
         hero.draw();
@@ -53,7 +57,21 @@ const drawBackground = () => {
     // ctx.fillRect(0, 200, 700, 100);
     // ctx.fillStyle = 'skyblue'
     // ctx.fillRect(0, 0, 700, 200);
-    background.drawBackground();
+    background0.drawBackground();
+    background1.drawBackground();
+}
+
+const updateBackground = () => {
+    if(enemy.x > 700-enemy.width && enemy.speedX === -1){
+        if (background0.x <= -700) {
+            background0.x = 700;
+        }
+        if (background1.x <= -700) {
+            background1.x = 700;
+        }
+        background0.x -= 1;
+        background1.x -= 1;
+    }
 }
 
 const combat = () => {
@@ -139,20 +157,20 @@ const battleResult = (heroSkill, enemySkill) => {
 }
 
 const displayVictory = () => {
-    ctx.fillStyle = 'DarkSeaGreen'
-    ctx.fillRect(0, 0, 700, 300);
+    // ctx.fillStyle = 'DarkSeaGreen'
+    // ctx.fillRect(0, 0, 700, 300);
     ctx.fillStyle = "Gold";
     ctx.textAlign = "center";
-    ctx.font = "70px serif";
+    ctx.font = "90px serif";
     ctx.fillText("VICTORY", 350, 150);
 }
 
 const displayDefeat = () => {
-    ctx.fillStyle = 'SaddleBrown'
-    ctx.fillRect(0, 0, 700, 300);
+    // ctx.fillStyle = 'SaddleBrown'
+    // ctx.fillRect(0, 0, 700, 300);
     ctx.fillStyle = "Gold";
     ctx.textAlign = "center";
-    ctx.font = "70px serif";
+    ctx.font = "90px serif";
     ctx.fillText("DEFEAT", 350, 150);
 }
 
