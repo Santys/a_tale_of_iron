@@ -1,15 +1,33 @@
+@import url('http://fonts.cdnfonts.com/css/inspector-general');
+
 body{
     background-color: AntiqueWhite;
+    font-family: 'Inspector General Expanded', sans-serif;
+    font-size: 20px;
 }
 
 .container {
     height: 90vh;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .instructions {
     height: 300px;
     width: 400px;
+    margin: 50px;
+    background-color: bisque;
+}
+
+.intro {
+    padding: 20px;
+    padding-bottom: 10px;
+    text-align: justify;
+}
+
+.controls{
+    padding: 20px;
+    padding-top: 10px;
+    text-align: justify
 }
