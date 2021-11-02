@@ -1,18 +1,22 @@
 class Hero {
     constructor() {
         this.life = 5;
-        this.x = 50;
-        this.y = 150;
-        this.width = 50;
-        this.height = 100;
+        this.x = 0;
+        this.y = 100;
+        this.width = 220;
+        this.height = 220;
         this.skills = ['attack', 'defend', 'mock'];
         this.isDefeated = false;
+        this.img = "./img/warrior_walk_0.png"
     }
     
 
     draw() {
-        ctx.fillStyle = 'navy'
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+        // ctx.fillStyle = 'navy'
+        // ctx.fillRect(this.x, this.y, this.width, this.height);
+        const imagen = new Image();
+        imagen.src = this.img;
+        ctx.drawImage(imagen, this.x, this.y, this.width, this.height);
     }
 
     selectSkill(skill) {

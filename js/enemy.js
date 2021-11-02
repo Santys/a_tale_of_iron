@@ -2,30 +2,34 @@ class Enemy {
     constructor(lives, color, skills) {
         this.life = lives;
         this.x = 1000;
-        this.y = 150;
+        this.y = 110;
         this.speedX = 0;
-        this.width = 50;
-        this.height = 100;
+        this.width = 240;
+        this.height = 160;
         // this.skills = ['attack', 'defend', 'mock'];
         this.skills = skills;
         this.isDefeated = false;
         this.color = color;
+        this.img = "./img/golem_03_Idle_0.png"
     }
     
 
     draw() {
-        ctx.fillStyle = this.color;
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+        // ctx.fillStyle = this.color;
+        // ctx.fillRect(this.x, this.y, this.width, this.height);
+        const imagen = new Image();
+        imagen.src = this.img;
+        ctx.drawImage(imagen, this.x, this.y, this.width, this.height);
     }
 
     move() {
         if(this.life <= 0) {
             this.x = 2000
         }
-        if(this.x > 600) {
+        if(this.x > 700-this.width) {
             this.x += this.speedX;
         } else {
-            this.x = 600;
+            this.x = 700-this.width;
         }
     }
 

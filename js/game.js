@@ -12,6 +12,8 @@ let skillNumber = 0;
 let enemyNumber = 0;
 
 
+
+
 //  Characters
 const hero = new Hero();
 const enemyFirst = new Enemy(2, 'DarkRed', ['attack', 'defend', 'mock', 'attack', 'attack', 'attack', 'attack']);
@@ -50,7 +52,7 @@ const drawBackground = () => {
 }
 
 const combat = () => {
-    if(enemy.x === 600 && skillPicked) {
+    if(enemy.x === 700-enemy.width && skillPicked) {
         const enemySkill = enemy.selectSkill();
         const heroSkill = hero.selectSkill(skillNumber);
         const result = battleResult(heroSkill, enemySkill);
@@ -66,7 +68,7 @@ const combat = () => {
 }
 
 const playerSkill = (skill) => {
-    if(enemy.x != 600) return false;
+    if(enemy.x != 700-enemy.width) return false;
     if(skill === 'ArrowUp') {
         skillPicked = true
         skillNumber = 0
@@ -140,7 +142,7 @@ const displayCombat = () => {
     ctx.font = "30px serif";
     ctx.fillText(`Lives: ${hero.life}`, 50, 50);
 
-    if(enemy.x === 600) {
+    if(enemy.x === 700-enemy.width) {
         ctx.fillStyle = 'red'
         ctx.beginPath();
         ctx.moveTo(350,100);
