@@ -141,7 +141,7 @@ const displayCombat = () => {
     ctx.fillText(`Lives: ${hero.life}`, 50, 50);
 
     if(enemy.x === 600) {
-        ctx.fillStyle = 'green'
+        ctx.fillStyle = 'red'
         ctx.beginPath();
         ctx.moveTo(350,100);
         ctx.lineTo(400,190);
@@ -155,5 +155,13 @@ const displayCombat = () => {
         ctx.fillText('ATTACK', 320, 85);
         ctx.fillText('MOCK', 405, 190);
         ctx.fillText('DEFEND', 240, 190);
+    } else {
+        ctx.fillStyle = 'green'
+        ctx.beginPath();
+        ctx.moveTo(300,100);
+        ctx.lineTo(400,145);
+        ctx.lineTo(300,190);
+        ctx.closePath();
+        ctx.fill();
     }
 }
