@@ -7,9 +7,16 @@ window.onload = () => {
             playerSkill(event.key)
         } else if (event.key === "ArrowUp") {
             playerSkill(event.key)
+        } else if(event.key === "d"){
+            enemy.speedX = -1;
         }
     });
-
+    
+    document.addEventListener("keyup", (event) => {
+    if (event.key === "d") {
+        enemy.speedX = 0;
+    }
+    });
 }
 
 

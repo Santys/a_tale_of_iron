@@ -3,7 +3,7 @@ class Enemy {
         this.life = 1;
         this.x = 1000;
         this.y = 150;
-        this.speedX = -1;
+        this.speedX = 0;
         this.width = 50;
         this.height = 100;
         // this.skills = ['attack', 'defend', 'mock'];
