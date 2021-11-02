@@ -66,6 +66,7 @@ const combat = () => {
 }
 
 const playerSkill = (skill) => {
+    if(enemy.x != 600) return false;
     if(skill === 'ArrowUp') {
         skillPicked = true
         skillNumber = 0
