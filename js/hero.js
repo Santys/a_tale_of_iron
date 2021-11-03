@@ -49,18 +49,7 @@ class Hero {
     }
 
     run() {
-        console.log(this.n)
         this.runInterval = setInterval(() => {
-            // if (this.runCurrImg === images.run1) {
-            //   this.runImage = images.run2;
-            // } else if (this.runImage === images.run2) {
-            //   this.runImage = images.run3;
-            // } else if (this.runImage === images.run3) {
-            //   this.runImage = images.run4;
-            // } else if (this.runImage === images.run4) {
-            //   this.runImage = images.run1;
-            // }
-            
             if(this.runCurrImg === this.runImg[this.n]){
                 if(this.n > 12) this.n = -1;
                 this.runCurrImg = this.runImg[this.n+1]
@@ -69,8 +58,6 @@ class Hero {
                 this.runCurrImg = this.runImg[0]
             }
             this.img = this.runCurrImg;
-            console.log(this.n)
-            // this.width = 65;
         }, 30);
         
     }

@@ -6,7 +6,7 @@ const ctx = canvas.getContext('2d');
 let skillPicked = false;
 let victory = false;
 let defeat = false;
-let isMuted = false;
+let isMuted = true;
 
 // Variables
 let skillNumber = 0;
@@ -29,6 +29,8 @@ const enemyThird = new Enemy(2, 2, ['attack', 'defend', 'mock', 'mock', 'mock', 
 const boss = new Enemy(3, 3, ['attack', 'defend', 'mock']);
 const enemyArray = [enemyFirst, enemySecond, enemyThird, boss];
 let enemy = enemyArray[enemyNumber]
+const arrowsImage = new Image();
+arrowsImage.src = "./img/arrow_key.png"
 
 
 const game = () => {
@@ -159,8 +161,6 @@ const battleResult = (heroSkill, enemySkill) => {
 }
 
 const displayVictory = () => {
-    // ctx.fillStyle = 'DarkSeaGreen'
-    // ctx.fillRect(0, 0, 700, 300);
     ctx.fillStyle = "Gold";
     ctx.textAlign = "center";
     ctx.font = "90px serif";
@@ -168,8 +168,6 @@ const displayVictory = () => {
 }
 
 const displayDefeat = () => {
-    // ctx.fillStyle = 'SaddleBrown'
-    // ctx.fillRect(0, 0, 700, 300);
     ctx.fillStyle = "Gold";
     ctx.textAlign = "center";
     ctx.font = "90px serif";
@@ -183,20 +181,14 @@ const displayCombat = () => {
     ctx.fillText(`Lives: ${hero.life}`, 110, 50);
 
     if(enemy.x === 700-enemy.width) {
-        ctx.fillStyle = 'red'
-        ctx.beginPath();
-        ctx.moveTo(350,100);
-        ctx.lineTo(400,190);
-        ctx.lineTo(300,190);
-        ctx.closePath();
-        ctx.fill();
+        ctx.drawImage(arrowsImage, 305, 100, 90, 95);
         ctx.fillStyle = 'white'
         ctx.font = "30px serif";
         ctx.fillText(`Lives: ${enemy.life}`, 580, 50);
         ctx.font = "15px serif";
         ctx.fillText('ATTACK', 350, 95);
-        ctx.fillText('MOCK', 425, 190);
-        ctx.fillText('DEFEND', 270, 190);
+        ctx.fillText('MOCK', 425, 180);
+        ctx.fillText('DEFEND', 275, 180)
     } else if (enemy.speedX != -1){
         ctx.fillStyle = 'yellow'
         ctx.beginPath();
