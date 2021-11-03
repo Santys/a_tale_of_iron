@@ -6,6 +6,7 @@ const ctx = canvas.getContext('2d');
 let skillPicked = false;
 let victory = false;
 let defeat = false;
+let isMuted = false;
 
 // Variables
 let skillNumber = 0;
@@ -13,6 +14,7 @@ let enemyNumber = 0;
 let enemySkill = '';
 let heroSkill = '';
 let result = '';
+
 
 
 
@@ -204,5 +206,15 @@ const displayCombat = () => {
         ctx.closePath();
         ctx.fill();
         ctx.fillRect(300, 140, 50, 10);
+    }
+}
+
+const mute = () => {
+    if(isMuted) {
+        isMuted = false;
+        music.play();
+    } else {
+        isMuted = true;
+        music.pause();
     }
 }

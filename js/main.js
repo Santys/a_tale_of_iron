@@ -1,5 +1,20 @@
-// Listeners
+
+// Listeners;
+let music = ''
+
 window.onload = () => {
+    music = new Audio('./sounds/music.wav');
+    music.preload = 'auto'
+    music.load();
+    music.play();
+    music.volume = 0.1;
+    music.loop = true;
+
+    document.getElementById("mute-button").onclick = () => {
+        console.log("mute")
+        mute();
+      };
+
     document.addEventListener("keydown", (event) => {
         if (event.key === "ArrowRight") {
             playerSkill(event.key)
