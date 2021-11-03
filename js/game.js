@@ -38,18 +38,16 @@ const game = () => {
     clearCanvas();
     if(victory){
         drawBackground();
+        hero.drawResult(0);
         displayVictory();
     } else if (defeat){
         drawBackground();
+        hero.drawResult(1);
         displayDefeat();
     } else {
         updateBackground();
         drawBackground();
         displayCombat();
-        // enemyArray.forEach((item) => {
-        //     item.move(); 
-        //     item.draw();
-        // })
         if(deathEnemy != undefined) deathEnemy.death();
         hero.draw();
         enemy.move();
