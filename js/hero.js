@@ -7,7 +7,27 @@ class Hero {
         this.height = 220;
         this.skills = ['attack', 'defend', 'mock'];
         this.isDefeated = false;
-        this.img = "./img/warrior_walk_0.png"
+        this.runInterval = "";
+        this.runCurrImg = "";
+        this.n = 0;
+        this.img = "./img/warrior_run_0.png"
+        this.runImg = [
+            "./img/warrior_run_0.png",
+            "./img/warrior_run_1.png",
+            "./img/warrior_run_2.png",
+            "./img/warrior_run_3.png",
+            "./img/warrior_run_4.png",
+            "./img/warrior_run_5.png",
+            "./img/warrior_run_6.png",
+            "./img/warrior_run_7.png",
+            "./img/warrior_run_8.png",
+            "./img/warrior_run_9.png",
+            "./img/warrior_run_10.png",
+            "./img/warrior_run_11.png",
+            "./img/warrior_run_12.png",
+            "./img/warrior_run_13.png",
+            "./img/warrior_run_14.png",
+        ]
     }
     
 
@@ -27,4 +47,32 @@ class Hero {
         if(this.life <= 0) this.isDefeated = true;
         return this.isDefeated;
     }
+
+    run() {
+        console.log(this.n)
+        this.runInterval = setInterval(() => {
+            // if (this.runCurrImg === images.run1) {
+            //   this.runImage = images.run2;
+            // } else if (this.runImage === images.run2) {
+            //   this.runImage = images.run3;
+            // } else if (this.runImage === images.run3) {
+            //   this.runImage = images.run4;
+            // } else if (this.runImage === images.run4) {
+            //   this.runImage = images.run1;
+            // }
+            
+            if(this.runCurrImg === this.runImg[this.n]){
+                if(this.n > 12) this.n = -1;
+                this.runCurrImg = this.runImg[this.n+1]
+                this.n++;
+            } else {
+                this.runCurrImg = this.runImg[0]
+            }
+            this.img = this.runCurrImg;
+            console.log(this.n)
+            // this.width = 65;
+        }, 30);
+        
+    }
+
 }
