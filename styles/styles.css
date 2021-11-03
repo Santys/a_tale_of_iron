@@ -6,8 +6,15 @@ body{
     font-size: 20px;
 }
 
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 100px;
+}
+
 .container {
-    height: 90vh;
+    height: 40vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -30,4 +37,24 @@ body{
     padding: 20px;
     padding-top: 10px;
     text-align: justify
+}
+
+.button {
+    transition-duration: 0.4s;
+    padding: 12px 28px;
+    border-radius: 8px;
+    border: 2px solid #4CAF50;
+}
+  
+  .button:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+
+#header {
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
