@@ -31,6 +31,7 @@ window.onload = () => {
                 keyFlag = true;
             }
             enemy.speedX = -1;
+            if(deathEnemy != undefined) deathEnemy.speedX = -2;
             keyFlag = false;
         }
     });
@@ -38,6 +39,7 @@ window.onload = () => {
     document.addEventListener("keyup", (event) => {
     if (event.key === "d") {
         enemy.speedX = 0;
+        if(deathEnemy != undefined) deathEnemy.speedX = 0;
         clearInterval(hero.runInterval);
         hero.img = hero.runImg[0];
         keyFlag = true;
@@ -50,7 +52,7 @@ window.onload = () => {
 // Run canvas
 const updateCanvas = () =>  {
     game();
-    
+
     requestAnimationFrame(updateCanvas);
 }
 

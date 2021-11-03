@@ -11,6 +11,7 @@ class Enemy {
         this.isDefeated = false;
         this.number = number;
         this.img = ["./img/golem_01_Idle_000.png", "./img/golem_02_Idle_000.png", "./img/golem_03_Idle_000.png", "./img/boss_Idle_000.png"]
+        this.deathImg = ["./img/golem_01_die_000.png", "./img/golem_02_die_000.png", "./img/golem_03_die_000.png", "./img/boss_die_000.png"]
     }
     
 
@@ -23,9 +24,9 @@ class Enemy {
     }
 
     move() {
-        if(this.life <= 0) {
-            this.x = 2000
-        }
+        // if(this.life <= 0) {
+        //     this.x = 2000
+        // }
         if(this.x > 700-this.width) {
             this.x += this.speedX;
         } else {
@@ -43,4 +44,11 @@ class Enemy {
         return this.isDefeated;
     }
 
+
+    death() {
+        this.x += this.speedX;
+        const imagen = new Image();
+        imagen.src = this.deathImg[this.number];
+        ctx.drawImage(imagen, this.x, this.y, this.width, this.height);
+    }
 }

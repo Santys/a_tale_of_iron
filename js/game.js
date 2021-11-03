@@ -29,6 +29,7 @@ const enemyThird = new Enemy(2, 2, ['attack', 'defend', 'mock', 'mock', 'mock', 
 const boss = new Enemy(3, 3, ['attack', 'defend', 'mock']);
 const enemyArray = [enemyFirst, enemySecond, enemyThird, boss];
 let enemy = enemyArray[enemyNumber]
+let deathEnemy;
 const arrowsImage = new Image();
 arrowsImage.src = "./img/arrow_key.png"
 
@@ -45,6 +46,11 @@ const game = () => {
         updateBackground();
         drawBackground();
         displayCombat();
+        // enemyArray.forEach((item) => {
+        //     item.move(); 
+        //     item.draw();
+        // })
+        if(deathEnemy != undefined) deathEnemy.death();
         hero.draw();
         enemy.move();
         enemy.draw();       
@@ -84,6 +90,7 @@ const combat = () => {
         heroSkill = hero.selectSkill(skillNumber);
         result = battleResult(heroSkill, enemySkill);
         if(enemy.defeated()) {
+            deathEnemy = enemy;
             enemyNumber++
             heroSkill = '';
             enemySkill = '';
