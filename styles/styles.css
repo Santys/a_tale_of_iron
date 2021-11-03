@@ -14,7 +14,7 @@ body{
 }
 
 .container {
-    height: 40vh;
+    height: 30vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,6 +25,7 @@ body{
     width: 400px;
     margin: 50px;
     background-color: bisque;
+    border: 5px solid black;
 }
 
 .intro {
@@ -43,18 +44,29 @@ body{
     transition-duration: 0.4s;
     padding: 12px 28px;
     border-radius: 8px;
-    border: 2px solid #4CAF50;
+    border: 2px solid #95B250;
+    background-color: #C9B590;
 }
   
   .button:hover {
-    background-color: #4CAF50; /* Green */
-    color: white;
+    background-color: #95B250; /* Green */
 }
 
 
 #header {
-    height: 30vh;
+    height: 20vh;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* #header img {
+    
+    height: 6vh;
+   
+} */
+
+
+#game-canvas{
+    border: 5px solid black;
 }

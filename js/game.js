@@ -109,6 +109,7 @@ const combat = () => {
     ctx.textAlign = "center";
     ctx.fillText(`${heroSkill.toUpperCase()}`, 110, 150);
     ctx.fillText(`${enemySkill.toUpperCase()}`, 580, 150);
+    ctx.font = "17px serif";
     ctx.fillText(`${result.toUpperCase()}`, 350, 250);
     
 }
