@@ -1,4 +1,4 @@
-![](https://imgur.com/osVUlC1)
+![](https://i.imgur.com/osVUlC1.png)
 
 A Tale Of Iron is an adventure in which you have to escape from a forest by defeating the enemies that appear in your way.
 
