@@ -7,6 +7,7 @@ let skillPicked = false;
 let victory = false;
 let defeat = false;
 let isMuted = true;
+let finalMusic = true;
 
 // Variables
 let skillNumber = 0;
@@ -15,7 +16,28 @@ let enemySkill = '';
 let heroSkill = '';
 let result = '';
 
-
+// Sounds
+hit = new Audio('./sounds/hit.mp3');
+hit.load();
+hit.volume = 0.2;
+shield = new Audio('./sounds/shield.mp3');
+shield.load();
+shield.volume = 0.1;
+mock = new Audio('./sounds/mock2.mp3');
+mock.load();
+mock.volume = 0.6;
+death = new Audio('./sounds/death.mp3');
+death.load();
+death.volume = 0.1;
+draw = new Audio('./sounds/draw.mp3');
+draw.load();
+draw.volume = 0.1;
+victoryMusic = new Audio('./sounds/victory.mp3');
+victoryMusic.load();
+victoryMusic.volume = 0.3;
+defeatMusic = new Audio('./sounds/defeat.mp3');
+defeatMusic.load();
+defeatMusic.volume = 0.1;
 
 
 
@@ -37,10 +59,14 @@ arrowsImage.src = "./img/arrow_key.png"
 const game = () => {
     clearCanvas();
     if(victory){
+        if(finalMusic) victoryMusic.play();
+        finalMusic = false; // Prevents music loop
         drawBackground();
         hero.drawResult(0);
         displayVictory();
     } else if (defeat){
+        if(finalMusic) defeatMusic.play();
+        finalMusic = false; // Prevents music loop
         drawBackground();
         hero.drawResult(1);
         displayDefeat();
@@ -93,6 +119,7 @@ const combat = () => {
             heroSkill = '';
             enemySkill = '';
             result = '';
+            death.play();
             // result = 'The enemy has been defeated'
         }
         if(enemyNumber > 3) victory = enemy.defeated()
@@ -112,6 +139,7 @@ const combat = () => {
     ctx.font = "17px serif";
     ctx.fillText(`${result.toUpperCase()}`, 350, 250);
     
+    
 }
 
 const playerSkill = (skill) => {
@@ -130,36 +158,47 @@ const playerSkill = (skill) => {
 
 /**
  * Reduces the life of the hero or the enemy depending on 
- * the outcome of the combat.
+ * the outcome of the combat. Play skills sounds.
  * 
  * @param {string} heroSkill The skill of the hero.
  * @param {string} enemySkill The skill of the enemy.
  * @return {boolean} True when skills are different and false if they are the same
  */
 const battleResult = (heroSkill, enemySkill) => {
-    if(heroSkill === enemySkill) return "Draw";
-
+    if(heroSkill === enemySkill) {
+        draw.play()
+        return "Draw";
+    }
     if(heroSkill === 'attack'){
+        hit.play(); 
         if(enemySkill === 'mock') {
+            mock.play();
             enemy.life -= 1;
             return "The enemy has been injured";
         } else if (enemySkill === 'defend'){
+            shield.play();
             hero.life -= 1;
             return "You have been injured";
         }
     } else if(heroSkill === 'defend'){
+        shield.play();
         if(enemySkill === 'attack') {
+            hit.play(); 
             enemy.life -= 1;
             return "The enemy has been injured";
         } else if (enemySkill === 'mock'){
+            mock.play();
             hero.life -= 1;
             return "You have been injured";
         }
     } else if(heroSkill === 'mock') {
+        mock.play();
         if(enemySkill === 'defend') {
+            shield.play(); 
             enemy.life -= 1;
             return "The enemy has been injured";
         } else if (enemySkill === 'attack'){
+            hit.play();
             hero.life -= 1;
             return "You have been injured";
         }
@@ -211,8 +250,20 @@ const mute = () => {
     if(isMuted) {
         isMuted = false;
         music.play();
+        hit.volume = 0.2;
+        shield.volume = 0.1;
+        mock.volume = 0.6;
+        death.volume = 0.1;
+        victoryMusic.volume = 0.3;
+        defeatMusic.volume = 0.1;
     } else {
         isMuted = true;
         music.pause();
+        hit.volume = 0;
+        shield.volume = 0;
+        mock.volume = 0;
+        death.volume = 0;
+        victoryMusic.volume = 0;
+        defeatMusic.volume = 0;
     }
 }
