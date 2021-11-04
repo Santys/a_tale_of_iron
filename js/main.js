@@ -1,7 +1,7 @@
 
 // Listeners;
 let music = ''
-let keyFlag = false;
+let keyFlag = true;
 
 window.onload = () => {
     music = new Audio('./sounds/music.wav');
